@@ -1,0 +1,197 @@
+\documentclass{beamer}
+
+\mode<presentation>
+
+\usepackage[dutch]{babel}
+%\usepackage{beamerthemesplit}
+\usepackage{hyperref}
+
+\usetheme{Berlin}
+\useinnertheme{rounded}
+\usecolortheme{rose}
+\setbeamertemplate{navigation symbols}{} 
+\title{Design patterns}
+\author{W. Oele}
+\date{\today}
+
+\begin{document}
+\frame{\titlepage}
+
+\section{Design patterns}
+
+\begin{frame}
+\frametitle{Deze les}
+\begin{itemize}
+\item introductie design patterns
+\end{itemize}
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Design patterns}
+Vragen van begin jaren '90:
+\begin{itemize}
+\item Komen problemen bij het maken van software iedere keer weer terug in een net iets andere vorm?
+\item Is het handig deze veel voorkomende problemen onder te brengen in een verzameling patronen?
+\item Kun je bij het oplossen van een probleem de oplossing makkelijker vinden als je een bestaand patroon herkent in het probleem?
+\end{itemize}
+\end{frame}
+
+\begin{frame} \frametitle{Categorisatie}
+
+\begin{itemize}
+ \item  Design patterns zijn het resultaat van een stelselmatige categorisatie van veel voorkomende, zich iedere keer herhalende, problemen bij het ontwerpen en aanpassen van software.\pause
+ \item Het is niet gezegd dat je middels categorisatie tot een beter inzicht in de materie komt of dat dit leidt tot vernieuwingen.\pause
+ \item Categorisatie is echter een stelselmatige manier om overzicht te cree\"eren en \emph{kan} dus zijn nut hebben\ldots Beter dan niets. \pause
+\end{itemize}
+\end{frame}
+
+\begin{frame} \frametitle{Wat is een design pattern?}
+  Een design pattern bestaat uit een aantal elementen:
+  \begin{itemize}
+  \item de naam van het patroon
+  \item het doel van het patroon: Wat los je ermee op?
+  \item hoe bereik je die oplossing?
+  \item wat zijn de gevolgen en waarmee rekening te houden?
+  \end{itemize}
+\end{frame}
+
+\begin{frame} \frametitle{Waarom design patterns te gebruiken?}
+  Twee belangrijke redenen:
+  \begin{itemize}
+  \item hergebruik van eerder gevonden oplossingen: We gaan niet iedere keer hetzelfde wiel opnieuw uitvinden.
+  \item standaardisatie: Design patterns vormen een mooie kapstok van begrippen waar een team van specialisten zich aan kan vasthouden. 
+  \end{itemize}
+\end{frame}
+
+\begin{frame} \frametitle{Andere redenenen}
+  \begin{itemize}
+  \item het in perspectief plaatsen van denkwijzes
+  \item bepalen of een gevonden oplossing de \emph{juiste} is i.p.v. slechts \emph{een} oplossing die werkt
+  \item tot code komen die gemakkelijker te veranderen is
+  \item verhoging van flexibiliteit, niets zo erg als specificaties die tijdens het implementeren veranderen\ldots komt echter vaak voor
+  \item gemakkelijker alternatieven vinden
+  \end{itemize}
+\end{frame}
+
+\section{Facade}
+
+\begin{frame} \frametitle{Het facade pattern}
+  \begin{itemize}
+  \item naam: het facade patroon
+  \item doel: een complex systeem kunnen gebruiken zonder er alles van af te hoeven weten
+  \item hoe: bouw een interface voor je client applicatie
+  \item gevolgen: beperkte functionaliteit
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]\frametitle{Voorbeeld}
+Stel je een een ingewikkelde database applicatie voor, waarin wordt bijgehouden:
+\begin{itemize}
+\item wie waar woont
+\item wat een huis kost
+\item huur of koop
+\item vrijstaand huis/rijtjeshuis/flat
+\item tuin of niet
+\item enz.
+\end{itemize}
+
+\end{frame}
+
+
+\begin{frame} \frametitle{Voorbeeld}
+  De opdracht:
+  \begin{itemize}
+  \item bouw een programma, waarmee de klant kan zien of het aantal koopwoningen in een bepaalde stad groeit of slinkt t.o.v. het aantal huurwoningen
+  \end{itemize}
+Traditionele oplossing:
+\begin{itemize}
+\item bouw een programma dat helemaal integreert in het bestaande programma\ldots
+  \begin{itemize}
+  \item zeer ingewikkeld
+  \item foutgevoelig
+  \item levert een hele hoop onnodige rompslomp op waar de klant niet op zit te wachten
+  \end{itemize}
+\end{itemize}
+\end{frame}
+
+
+\begin{frame} \frametitle{De facade}
+  \begin{itemize}
+\item de client applicatie hoeft niet alles van het ingewikkelde systeem te weten
+\item bouw een een facade klasse die met (onderdelen van) het complexe systeem communiceert
+\item de facade vormt een interface voor de client applicatie:
+  \begin{itemize}
+  \item simpeler
+  \item gericht op wat de client applicatie nodig heeft zonder overbodige rommel
+  \item respecteert de compliteit van het systeem zonder deze te willen wijzigen
+  \end{itemize}
+\end{itemize}
+\end{frame}
+
+
+\section{Adapter}
+
+
+\begin{frame}[fragile]\frametitle{Het adapter pattern}
+  \begin{itemize}
+  \item naam: het adapter patroon
+  \item doel: de client applicatie laten samenwerken met een ingewikkeld systeem zonder dit systeem te hoeven aanpassen
+  \item hoe: bouw een adapter tussen systeem en client applicatie, de adapter is een soort vertaler
+  \item gevolgen: bestaande systemen kunnen worden uitgebreid zonder rekening te hoeven houden met de interface
+  \end{itemize}
+\end{frame}
+
+
+\begin{frame} \frametitle{Verschillen facade v.s. adapter}
+Facade:
+\begin{itemize}
+\item bestaan er reeds classes? Ja
+\item bestaat er reeds een interface waar we ons aan moeten houden? Nee (die maak je zelf)
+\item is een eenvoudigere interface gewenst? Ja
+\end{itemize}
+Adapter:
+\begin{itemize}
+\item bestaan er reeds classes? Ja
+\item bestaat er reeds een interface waar we ons aan moeten houden? Ja
+\item is een eenvoudigere interface gewenst? Nee
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}[fragile]\frametitle{Voorbeeld}
+Blender, een 3d modelleringsprogramma\ldots
+
+Werking:
+\begin{itemize}
+\item bouw een 3d model
+\item smeer bitmaps tegen alle vlakken
+\item render het model
+\end{itemize}
+\end{frame}
+
+
+
+\begin{frame} \frametitle{Blender: het probleem}
+  Een groep slimmeriken is bezig met het bouwen van een nieuwe rendering engine\ldots
+  \begin{itemize}
+  \item de engine bestaat uit een enorme hoeveelheid classes met daarin vele methodes
+  \item men wil blender met deze engine laten werken
+  \item de technici werken vrolijk verder aan hun engine en vragen de heren van Blender niets
+  \end{itemize}
+Probleem: laat Blender met deze nieuwe engine werken
+\end{frame}
+
+\begin{frame} \frametitle{Blender: oplossing}
+  Bouw een adapter:
+  \begin{itemize}
+  \item de adapter klasse heeft een pointer naar het rendering object in zich.
+  \item methodes die vanuit Blender worden aangeroepen, worden door de adapter vertaald naar methodes die de engine begrijpt
+  \end{itemize}
+\end{frame}
+
+
+
+
+\end{document}
