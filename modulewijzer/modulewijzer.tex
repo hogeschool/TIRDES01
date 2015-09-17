@@ -179,7 +179,19 @@ Week&Literatuur&Lesinhoud\\
 \hline
 \end{tabular}
 \section{Toetsing en beoordeling}
-\subsection{Procedure}
+Twee procedures zijn, afhankelijk van de opdracht en docent, beschikbaar:
+
+\subsection{Procedure 1}
+Deze module wordt getoetst middels groepsopdrachten. Voorwaarden:
+\begin{itemize}
+\item Opdrachten worden op papier en tijdens de practicumlessen ingeleverd.
+\item Een groep bestaat uit maximaal vier studenten. Deze leveren gezamenlijk \'e\'en opdracht in.
+\item Bij het inleveren zijn alle leden van de groep aanwezig, opdat \emph{elk} lid de uitwerking mondeling kan verdedigen.
+\item De practicumdocent kan naar eigen inzicht (bijvoorbeeld om didactische redenen) afwijken van de practicumopgaven en alternatieve opdrachten aanbieden. Hierbij staat duidelijkheid en integriteit richting de studenten uiteraard voorop.
+\end{itemize}
+
+
+\subsection{Procedure 2}
 The module is examinated through a series of heavily connected practicum assignments. The assignment feature the building of a simple game in a modern mainstream OO language such as Java or C\#. The assignments will begin with an unstructured, mostly procedural game which, through the application of design patterns, will become always more structured. The parts of the game will become more and more independent from each other, and at the same time more reusable.
 
 Handing in is done through GitHub, with a project with name 
@@ -263,96 +275,6 @@ Dublin-descriptoren:
 \item Communicatie
 \end{enumerate}
 \newpage
-% \section{Bijlage 2: Voorbeeldtoets}
-%  \begin{itemize}
-%  \item Dit tentamen bestaat uit vijf open vragen.
-%  \item Werk netjes en overzichtelijk; Onleesbare tekst wordt fout gerekend\ldots
-%  \item Lees goed en let op de tijd.
-% \end{itemize}
-
-% \subsubsection*{Vraag 1}
-% Wat is nodig om van een gegeven stuk (foutloze) broncode tot een werkend programma te komen? Beschrijf alle relevante hard-en software en beschrijf wat al deze ''onderdelen'' doen. Beperk het antwoord tot maximaal een halve bladzijde.
-% \subsubsection*{Antwoord}
-% Zie boek!
-% \subsubsection*{Vraag 2}
-% Onderstaande statements worden na elkaar uitgevoerd in een programma. Noteer de uitvoer van dit programma.
-% \begin{verbatim}
-% int x=5,y=10,z=20;
-% x*=y-z--;
-% System.out.println("x: "+x+" y: "+y+" z: "+z);
-% z*=2+2; x=++y/2;
-% System.out.println("x: "+x+" y: "+y+" z: "+z);
-% for(x=0;x<5;x++){y+=x;} z%=15; 
-% System.out.println("x: "+x+" y: "+y+" z: "+z);
-% y-=z+x/2;
-% System.out.println("x: "+x+" y: "+y+" z: "+z);
-% \end{verbatim}
-
-% \subsubsection*{Antwoord}
-% \begin{verbatim}
-% x: -50 y: 10 z: 19
-% x:   5 y: 11 z: 76
-% x:   5 y: 21 z:  1
-% x:   5 y: 18 z:  1
-% \end{verbatim}
-
-
-% \subsubsection*{Vraag 3}
-% Gegeven de signatuur van een methode: \verb|public static float convert(float temp);|
-% Deze methode rekent het aantal graden Celcius om naar het aantal graden Fahrenheit. Het verband tussen het aantal graden Fahrenheit en het aantal graden Celcius is als volgt:
-% \begin{displaymath}
-% T_{Celcius}=(T_{Fahrenheit}-32).\frac{5}{9}  
-% \end{displaymath}
-% Schrijf de betreffende methode.
-% \subsubsection*{Antwoord}
-% \begin{verbatim}
-% public static float convert(float temp)
-% {
-% return(temp*(9.0/5.0)+32);
-% }
-% \end{verbatim}
-
-% \subsubsection*{Vraag 4}
-% Wat is het verschil tussen de \verb|while| en de \verb|for| loop? Teken een stroomschema om dit aan te duiden.
-% \subsubsection*{Antwoord}
-%   \begin{figure}[p]
-%     \centering
-%     \includegraphics[width=8cm]{for}    
-%     \caption{De for loop}
-%   \end{figure}
-%   \begin{figure}[p]
-%     \centering
-%     \includegraphics[width=8cm]{while}
-%     \caption{De while loop}
-%   \end{figure}
-
-% \subsubsection*{Vraag 5}
-% Het $\Sigma$ teken wordt geacht u bekend te zijn. Naast het $\Sigma$ teken, bestaat ook het $\Pi$ teken. Betekenis en notatie zijn de volgende:
-% \begin{displaymath}
-%   \prod_{i=1}^{i=3}2i=2\times 4\times 6=48 \quad  \mbox{, ook geldt:} \quad \prod_{i=1}^{i=n}=n!
-% \end{displaymath}
-% Schrijf de methode \verb|public static float foo(int a, int b)| die het volgende uitrekent:
-% \begin{displaymath}
-%  \sum_{x=1}^{x=a}\prod_{y=1}^{y=b}2xy+1;
-% \end{displaymath}
-% \subsubsection*{Antwoord}
-% \begin{verbatim}
-%  public static float foo(int a, int b)
-%     {
-%      int result=0;
-%         for(int x=1;x<=a;x++)
-%           {
-%             int mulresult=1;
-%             for(int y=1;y<=b;y++)
-%               {
-%                mulresult=mulresult*(2*x*y+1);
-%               }
-%             result+=mulresult;
-%           }
-%     return result;
-%     }
-% \end{verbatim}
-% \newpage
 
 \section{Bijlage 3: Studielast (normering in ecs)}
 \begin{tabular}{|l|p{3cm}|p{3cm}|p{2cm}|}
