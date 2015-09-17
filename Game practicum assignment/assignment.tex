@@ -1,0 +1,161 @@
+\documentclass[titlepage,a4paper, 11pt]{article}
+
+\usepackage[english]{babel}
+\usepackage{graphicx,fancyhdr,hyperref,a4wide}	
+\usepackage{listings}
+\lstset{language=C,
+basicstyle=\ttfamily\footnotesize,
+mathescape=true,
+breaklines=true}
+\lstset{
+  literate={ï}{{\"i}}1
+           {ì}{{\`i}}1
+}
+
+%\setlength{\parindent}{0.0in}     % inspringen bij nieuwe alinea?
+%\setlength{\parskip}{0.1in}       %ruimte laten tussen alinea' s?
+%\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+
+\newcommand{\mcode}{TIRDES01}  %modulecode
+\newcommand{\mname}{Design patterns} %modulenaam
+\newcommand{\HRule}{\rule{\linewidth}{1pt}} % dikke horizontale lijn voor frontpagina
+
+\renewcommand{\headrulewidth}{0.4pt}     %dikte van headerlijn
+\renewcommand{\footrulewidth}{0.4pt}     %dikte van footerlijn
+
+\headheight = 70pt                        %body van pagina verder naar beneden
+\voffset = -40pt                          %corrigeren, anders valt footer van de pagina
+\lhead{\large Practicum games}            %linker headertekst
+\chead{\large Hogeschool Rotterdam}       %centraal headertekst
+\rhead{\includegraphics[width=2cm]{logo}} %rechter headertekst met logo
+
+\lfoot{\mcode\ \today}                    %linker foot tekst: modulecode en datum
+\cfoot{}                                  %center foot tekst leeg
+
+\pagestyle{fancy}                         % het fancyheaders pakket van van Oostrum gebruiken
+
+
+\begin{document}
+\sffamily
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%FRONTPAGINA%%%%%%%%%%%%%%%%%%%
+\begin{titlepage}
+
+\thispagestyle{fancy}
+\ \\
+\ \\
+\ \\
+\begin{center}
+
+% Titel
+  \textsc{\LARGE Hogeschool Rotterdam / CMI}\\[1.5cm]
+
+  \HRule \\[0.4cm]
+  { \Huge \bfseries \mname}\\[0.4cm]
+  \ \\
+  \ \\
+  { \large \bfseries \mcode}\\[0.4cm]
+
+  \HRule \\[1.5cm]
+
+  \vfill
+\end{center}
+\end{titlepage}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%FRONTPAGINA%%%%%%%%%%%%%%%%%%%
+\rfoot{\thepage} %pagina nummering vanaf inhoudsopgave
+\tableofcontents %inhoudsopgave
+\newpage
+
+\section{Assignments and grading}
+The module is examinated through a series of heavily connected practicum assignments. The assignment feature the building of a simple game in a modern mainstream OO language such as Java or C\#. The assignments will begin with an unstructured, mostly procedural game which, through the application of design patterns, will become always more structured. The parts of the game will become more and more independent from each other, and at the same time more reusable.
+
+Handing in is done through GitHub, with a project with name 
+
+\texttt{MODULE-CODE\_STUDENT-NUMBER1\_STUDENT-NUMBER2\_STUDENT-NUMBER3\_STUDENT-NUMBER4}. 
+
+Therefore, a group made up of students 123456, 654321, 123654, and 654123 would hand-in a public GitHub project with name:
+
+\texttt{TIRDES01\_123456\_654321\_123654\_654123}.
+
+At the worst weekly check-ins will be required \textit{from every member of the team}. Even though the course allows group work, delegation is not permitted. Each and every member of the team \textbf{must know} how all aspects of the handed-in code work. This will be ascertained through an oral check (\textbf{not an oral examination}) where students will be asked to explain random parts of the code, independently from authorship.
+
+\textbf{The oral check will be done during the last practicum lecture, which is also the final deadline. During the last lecture grades will be given.} Retake will happen following the same examination structure: a short oral check based on the handed-in GitHub project. Retake will be done during the exam weeks of the second period.
+
+\paragraph*{Assignment 0 - the basics}
+The first assignment requires building a very small game. For the assignment to be sufficient, the game must feature at the very least:
+\begin{itemize}
+\item at least three different entities with different roles within the game (for example spaceships, asteroids, and projectiles)
+\item input in order to control some entities (for example the keys to move the spaceship and the space key to shoot projectiles)
+\item interaction between entities (for example contact between projectiles and asteroids causes both to disappear and an explosion to take place)
+\end{itemize}
+
+It is highly recommended to use the combination of C\# and the open-source software MonoGame in order to build the game. Similar environments do exist in Java and may be used. For an extra challenge (and therefore extra points), other languages which may be used are F\# and Haskell.
+
+\textbf{Score: 25\%}
+
+
+\paragraph*{Assignment 1 - adapter/façade for rendering}
+Separate the game logic and the rendering logic through a mixture of façade (the rendering system) and adapters (for the objects to render). The main representation of data is done in the game-logic object, whereas the adapters store additional, rendering-specific data.
+
+Additionally, prepare a UML diagram with the relevant classes related to the new rendering architecture.
+
+\textbf{Score: 25\%}
+
+
+\paragraph*{Assignment 2 - factory and abstract factory}
+Factor out the logic for the creation of objects (and their rendering adapters) within a list of abstract factories that determine themselves when and how to create objects for the game logic and rendering façade.
+
+Additionally, prepare a UML diagram with the relevant classes related to the new creation of objects architecture.
+
+\textbf{Score: 25\%}
+
+
+\paragraph*{Assignment 3 - strategy/decorator}
+Build a series of classes that implement the interface:
+
+\begin{lstlisting}
+interface Script {
+  bool Tick(float dt);
+  Script Reset();
+}
+\end{lstlisting}
+
+Concrete implementations of the class will be, at the very least:
+\begin{itemize}
+\item the \texttt{Wait} class, which \texttt{Tick} method returns \texttt{true} only after a certain amount of time
+\item the \texttt{WaitKeyPress} class, which \texttt{Tick} method returns \texttt{true} only after a certain key is pressed
+\item the \texttt{Sequentialize} class, which \texttt{Tick} method returns \texttt{true} only after all its internal \texttt{Script} instances have returned \texttt{true}, in the proper storage order
+\item the \texttt{Repeat} class, which \texttt{Tick} method always returns \texttt{false} but, whenever the internal \texttt{Script} is done (its \texttt{Tick} method returns \texttt{true}), invokes \texttt{Reset} on the internal \texttt{Script} to start it again
+\end{itemize}
+
+Additionally, present a UML diagram with the relevant classes related to the new control architecture.
+
+\textbf{Score: 25\%}
+
+\newpage
+\section{Examination matrix}
+\begin{tabular}{|p{1cm}|p{4cm}|p{4cm}|p{4cm}|}
+\hline
+&Leerdoelen&Dublin descriptoren&Verwijzing naar opdracht / vraag / criteria\\
+\hline
+1&o.o.p., u.m.l.&1,2,3,4&practicumopdrachten 0, 1, 2, 3 \\
+\hline
+2&adapter, facade&1,2,3,4&practicumopdracht 1 \\
+\hline
+3&abstract factory&1,2,3,4&practicumopdracht 2 \\
+\hline
+4&strategy/decorator&1,2,3,4&practicumopdracht 3 \\
+\hline
+\end{tabular}\\
+\vspace{1cm}\\
+Dublin-descriptoren:
+\begin{enumerate}
+\item Kennis en inzicht
+\item Toepassen kennis en inzicht
+\item Oordeelsvorming
+\item Communicatie
+\end{enumerate}
+\newpage
+
+\end{document}
+
+
