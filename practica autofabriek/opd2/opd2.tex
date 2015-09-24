@@ -1,0 +1,84 @@
+\documentclass[fleqn,11pt]{article}
+
+\usepackage[dutch]{babel}
+\usepackage{epsfig}
+
+\title{Design patterns opdracht 2: de motor}
+\author{W. Oele}
+
+\begin{document}
+\sffamily
+\maketitle
+\newpage
+\emph{Lees eerst de hele opdracht alvorens te beginnen.}
+
+\subsection*{Inleiding}
+In de komende drie practicumopdrachten ga je werken aan het ontwerpen (en programmeren) van een auto. In deze eerste opdracht houden we ons bezig met het ontwerpen van de motor. Daarna volgen allerlei andere onderdelen, zoals:
+\begin{itemize}
+\item een benzinetank
+\item de versnellingsbak
+\item wielen
+\item etc.
+\end{itemize}
+Aan het einde van deze module moet er een programma zijn ontwikkeld, waarmee de gebruiker middels een g.u.i. een auto kan ``besturen''. De g.u.i. is, bij wijze van spreken, het dashboard van de auto en bevat diverse knoppen en andere componenten, waarmee de auto bestuurd kan worden. In andere onderdelen van de g.u.i. wordt informatie aan de gebruiker gegeven, zoals snelheid, toerental, inhoud van de brandstoftank, etc. Het geheel werkt realtime. 
+\begin{center}
+\fbox{In deze eerste opdracht richten we ons uitsluitend op de motor van de auto.}  
+\end{center}
+
+
+\subsection*{Opdracht 1}
+Ontwerp een automotor en noteer je ontwerp in u.m.l. De eisen, waaraan de motor moet voldoen zijn de volgende:
+
+\subsubsection*{Starten en stoppen}
+\begin{itemize}
+\item De motor moet gestart en gestopt kunnen worden.
+\end{itemize}
+\subsubsection*{Toerental}
+\begin{itemize}
+\item Het toerental van de motor dient ingesteld te kunnen worden (``gas geven'').
+\item Een automotor draait nooit op een constant aantal toeren. Er zitten kleine fluctuaties in en deze moeten in het programma worden ingebouwd. We kunnen voor het inbouwen van deze fluctuaties enkele statistische verdelingen gebruiken. Zoek op internet op:
+\begin{itemize}
+\item realistische waarden voor het toerental van een automotor.
+\item welke statistische distributie de toevalsgenerator van Java gebruikt.
+\item hoe je m.b.v. van de toevalsgenerator een normale verdeling kunt \emph{genereren.}
+\item hoe je m.b.v. van de toevalsgenerator een negatief exponenti\"ele verdeling kunt \emph{genereren.}
+\end{itemize}
+\end{itemize}
+Ontwerp twee soorten motoren die verschillen in de statistische verdelingen, waarmee het toerental wordt bepaald. 
+
+
+
+\subsubsection*{Brandstofverbruik}
+De motor verbruikt iedere seconde/minuut/uur een bepaalde hoeveelheid brandstof en dit is afhankelijk van het toerental. 
+\begin{itemize}
+\item Maak een beredeneerde schatting van het brandstof verbruik per tijdseenheid.
+\item Ontwerp de motor zo dat deze per tijdseenheid een bericht naar de buitenwereld kan sturen over de verbruikte hoeveelheid brandstof. 
+\end{itemize}
+
+\subsection*{Opdracht 2}
+Ontwerp een g.u.i. Met de g.u.i. moet de gebruiker \emph{realtime}:
+\begin{itemize}
+\item het toerental kunnen bepalen (``gas geven'').
+\item het toerental kunnen aflezen.
+\item de motor kunnen starten en stoppen. 
+\end{itemize}
+Je mag alle componenten uit de Java a.p.i. gebruiken die je geschikt acht voor het maken van de g.u.i. Het is ook toegestaan \emph{zelf} componenten te ontwerpen, bijvoorbeeld een ``analoge'' toerenteller. Dit laatste is overigens wel moeilijker, maar als je ontwerp goed is heeft het geen grote gevolgen voor de rest van je programma. 
+
+\subsection*{Aanwijzingen}
+De motor is slechts het eerste onderdeel van onze auto. De motor zal derhalve zodanig ontworpen moeten worden dat deze:
+\begin{itemize}
+\item uitbreidbaar is.
+\item makkelijk te vervangen is door een soortgelijk exemplaar.
+\item gemakkelijk ingebouwd kan worden in een groter geheel.
+\end{itemize}
+Voor de g.u.i. geldt hetzelfde. 
+
+\subsection*{Opdracht 3}
+Programmeer een programma, waarmee je je motoren kunt testen. 
+
+\begin{center}
+\fbox{Begin pas met programmeren als de docent je ontwerp in u.m.l. heeft goedgekeurd! }  
+\end{center}
+
+
+\end{document}
