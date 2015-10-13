@@ -18,7 +18,6 @@ namespace DesPatSampleUnstructured
   //  public InstructionRes A, B;
   //  public And(InstructionRes a, InstructionRes b) { A = a;  B = b; }
   //}
-  //class Nothing : InstructionRes { }
   //class CreateAsteroid : InstructionRes { }
 
   //new And(new Done(), new CreateAsteroid())
