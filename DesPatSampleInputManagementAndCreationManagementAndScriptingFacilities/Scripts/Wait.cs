@@ -7,11 +7,12 @@ namespace DesPatSampleUnstructured.Scripts
 {
   class Wait : Instruction
   {
-    float timeToWait, initialTimeWait;
-    public Wait(float timeToWait)
+    float timeToWait;
+    Func<float> getTimeToWait;
+    public Wait(Func<float> getTimeToWait)
     {
-      this.timeToWait = timeToWait;
-      this.initialTimeWait = timeToWait;
+      this.timeToWait = getTimeToWait();
+      this.getTimeToWait = getTimeToWait;
     }
 
     public override InstructionResult Execute(float dt)
@@ -25,7 +26,7 @@ namespace DesPatSampleUnstructured.Scripts
 
     public override Instruction Reset()
     {
-      return new Wait(initialTimeWait);
+      return new Wait(getTimeToWait);
     }
   }
 }

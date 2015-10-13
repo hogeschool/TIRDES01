@@ -17,83 +17,6 @@ namespace DesPatSampleUnstructured
     RunningAndCreateAsteroid
   }
 
-  class For : Instruction
-  {
-    int start, end, i;
-    Func<int, Instruction> getBody;
-    Instruction body;
-    public For(int start, int end, Func<int,Instruction> getBody)
-    {
-      this.i = start;
-      this.start = start;
-      this.end = end;
-      this.getBody = getBody;
-      this.body = getBody(i);
-    }
-
-    public override InstructionResult Execute(float dt)
-    {
-      if (i >= end)
-        return InstructionResult.Done;
-      else
-      {
-        switch (body.Execute(dt))
-        {
-          case InstructionResult.Done:
-            i++;
-            body = getBody(i);
-            return InstructionResult.Running;
-          case InstructionResult.DoneAndCreateAsteroid:
-            i++;
-            body = getBody(i);
-            return InstructionResult.RunningAndCreateAsteroid;
-          case InstructionResult.Running:
-            return InstructionResult.Running;
-          case InstructionResult.RunningAndCreateAsteroid:
-            return InstructionResult.RunningAndCreateAsteroid;
-        }
-        return InstructionResult.Done;
-      }
-    }
-
-    public override Instruction Reset()
-    {
-      return new For(start, end, getBody);
-    }
-  }
-
-  class Repeat : Instruction
-  {
-    Instruction body;
-    public Repeat(Instruction body)
-    {
-      this.body = body;
-    }
-
-    public override InstructionResult Execute(float dt)
-    {
-        switch (body.Execute(dt))
-        {
-          case InstructionResult.Done:
-            body = body.Reset();
-            return InstructionResult.Running;
-          case InstructionResult.DoneAndCreateAsteroid:
-            body = body.Reset();
-            return InstructionResult.RunningAndCreateAsteroid;
-          case InstructionResult.Running:
-            return InstructionResult.Running;
-          case InstructionResult.RunningAndCreateAsteroid:
-            return InstructionResult.RunningAndCreateAsteroid;
-        }
-        return InstructionResult.Running;
-    }
-
-    public override Instruction Reset()
-    {
-      return new Repeat(body.Reset());
-    }
-  }
-
   public class Game1 : Game
   {
     GraphicsDeviceManager graphics;
@@ -105,16 +28,17 @@ namespace DesPatSampleUnstructured
       Content.RootDirectory = "Content";
     }
 
+    static Random rand = new Random();
     Instruction gameLogic =
       new Repeat(
           new For(0, 10, i =>
-                new Wait(i * 0.1f) +
+                new Wait(() => i * 0.1f) +
                 new CreateAsteroid()) +
-          new Wait(3.0f) +
+          new Wait(() => rand.Next(1,5)) +
           new For(0, 10, i =>
-                new Wait(1.0f) +
+                new Wait(() => (float)rand.NextDouble() * 1.0f + 0.2f) +
                 new CreateAsteroid()) +
-          new Wait(2.0f));
+          new Wait(() => rand.Next(2, 3)));
 
     InputController input = new KeyboardController();
 

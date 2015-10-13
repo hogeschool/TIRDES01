@@ -44,6 +44,8 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Scripts\CreateAsteroid.cs" />
+    <Compile Include="Scripts\Repeat.cs" />
+    <Compile Include="Scripts\For.cs" />
     <Compile Include="Scripts\Wait.cs" />
     <Compile Include="Scripts\Semicolon.cs" />
     <Compile Include="Scripts\Instruction.cs" />
