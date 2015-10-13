@@ -9,6 +9,21 @@ using DesPatSampleUnstructured.Scripts;
 
 namespace DesPatSampleUnstructured
 {
+  // suggestion for extensibility of results
+  //interface InstructionRes {}
+  //class Running : InstructionRes { }
+  //class Done : InstructionRes{ }
+  //class And : InstructionRes
+  //{
+  //  public InstructionRes A, B;
+  //  public And(InstructionRes a, InstructionRes b) { A = a;  B = b; }
+  //}
+  //class Nothing : InstructionRes { }
+  //class CreateAsteroid : InstructionRes { }
+
+  //new And(new Done(), new CreateAsteroid())
+  //new Done()
+
   enum InstructionResult
   {
     Done,
